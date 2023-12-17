@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Journal-Mate</title>
+</head>
+<body>
+    <div class="entry-container">
+        <h2>Entry</h2>
+        <form class="entry-form" action="#" method="post">
+          <div class="form-group">
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title" placeholder="Enter a title if desired, otherwise the date will be the title.">
+          </div>
+          <div class="form-group">
+            <label for="journal-entry">What's on your mind?</label>
+            <textarea name="" id="journal-entry" cols="100" rows="25"></textarea>
+          </div>
+          <div class="form-group">
+            <button type="button" onclick="storeEntry()">Store</button>
+            <button type="button" onclick="downloadFormData()">Download</button>
+
+          </div>
+        </form>
+      </div>
+    <script src="scripts.js"></script>
+</body>
+</html>
