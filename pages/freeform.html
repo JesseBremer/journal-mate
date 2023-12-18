@@ -16,15 +16,16 @@
           </div>
           <div class="form-group">
             <label for="journal-entry">What's on your mind?</label>
-            <textarea name="" id="journal-entry" cols="100" rows="25"></textarea>
+            <textarea name="" id="journal-entry" cols="100" rows="25" placeholder="Drawing a blank? Try the prompt button!"></textarea>
           </div>
           <div class="form-group">
+            <button type="button" onclick="generateNewPrompt()">New Prompt</button>
             <button type="button" onclick="storeEntry()">Store</button>
             <button type="button" onclick="downloadFormData()">Download</button>
 
           </div>
         </form>
       </div>
-    <script src="/scripts/scripts.js"></script>
+    <script src="/scripts/freeformscript.js"></script>
 </body>
 </html>
