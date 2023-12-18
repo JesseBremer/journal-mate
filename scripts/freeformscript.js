@@ -66,7 +66,7 @@ function downloadFormData() {
     "What was a small detail I noticed today?",
     "What was the weather like today?",
     "What am I thankful for today?",
-    "What could I have done differently today",
+    "What could I have done differently today?",
     "How can I make tomorrow even better?"
     ];
 
