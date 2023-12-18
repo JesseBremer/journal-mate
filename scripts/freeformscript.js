@@ -1,4 +1,5 @@
 function storeEntry() {
+    //eventually this will send data to google drive.
     // Get form elements by their IDs
     let entryTitle = document.getElementById('title');
     let journalEntry = document.getElementById('journal-entry');
