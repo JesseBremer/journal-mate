@@ -8,7 +8,7 @@ function login(event) {
     // Replace the condition with your actual authentication logic
     if (username === 'example' && password === 'password') {
       // Redirect to another page upon successful login
-      window.location.href = 'freeform.html';
+      window.location.href = 'selectionpage.html';
     } else {
       alert('Invalid username or password. Please try again.');
     }
