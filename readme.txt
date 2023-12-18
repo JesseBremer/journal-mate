@@ -50,4 +50,5 @@ generates entry at end of questionaire.
 -- How did you feel about today?
 -- What was something good that happened to you?
 -- ect..
+---skip button
 
