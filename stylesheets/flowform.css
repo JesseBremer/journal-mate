@@ -1,0 +1,27 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+
+  .button-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .button {
+    cursor: pointer;
+    padding: 10px;
+    margin: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: center;
+    transition: background-color 0.3s;
+  }
+
+  .button:hover {
+    background-color: #f0f0f0;
+  }
