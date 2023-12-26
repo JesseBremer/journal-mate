@@ -39,6 +39,7 @@ Three Forms
 - Show Overview of entry for the day.
 
 -At end of day the entry saves and is blank for next day
+--this could also be done by sending the overview e-mail to an email if not done manually?
 
 2. Freeform
 --One long form entry. 
@@ -51,4 +52,10 @@ generates entry at end of questionaire.
 -- What was something good that happened to you?
 -- ect..
 ---skip button
+
+----------------------------
+todo:
+
+- link with drive to save - Freeform
+
 
