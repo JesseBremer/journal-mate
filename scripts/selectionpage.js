@@ -1,3 +1,22 @@
+// Personal subtitle messages
+const personalSubtitles = [
+    "Let's capture today's moments together",
+    "Ready to reflect on your day?",
+    "Your personal space for thoughts and memories",
+    "Time for some meaningful reflection",
+    "Let's make today's thoughts count",
+    "Your journey of self-discovery continues",
+    "Ready to grow through reflection?",
+    "Let's explore what's on your mind",
+    "How are you feeling today?",
+    "What's on your mind?",
+    "Ready to journal?",
+    "Let's reflect together",
+    "Let's build your mindfulness practice",
+    "Continuing your growth journey",
+    "Making reflection a habit, one day at a time"
+];
+
 // Daily inspiring quotes
 const inspiringQuotes = [
     { text: "The journey of a thousand miles begins with one step.", author: "Lao Tzu" },
@@ -32,6 +51,17 @@ const inspiringQuotes = [
     { text: "What we think, we become.", author: "Buddha" }
 ];
 
+// Display random personal subtitle
+function displayPersonalSubtitle() {
+    const randomIndex = Math.floor(Math.random() * personalSubtitles.length);
+    const subtitle = personalSubtitles[randomIndex];
+
+    const subtitleElement = document.querySelector('.welcome-subtitle');
+    if (subtitleElement) {
+        subtitleElement.textContent = subtitle;
+    }
+}
+
 // Display daily quote based on date
 function displayDailyQuote() {
     const today = new Date();
@@ -43,8 +73,36 @@ function displayDailyQuote() {
     document.getElementById('quote-author').textContent = `— ${todaysQuote.author}`;
 }
 
-// Load quote when page loads
-window.addEventListener('DOMContentLoaded', displayDailyQuote);
+// Load username for personalized welcome
+async function loadWelcomeUsername() {
+    try {
+        const response = await fetch('/api/auth/status', {
+            credentials: 'include'
+        });
+        const data = await response.json();
+
+        if (data.authenticated) {
+            const welcomeUsername = document.getElementById('welcome-username');
+            if (welcomeUsername) {
+                welcomeUsername.textContent = data.user.username;
+            }
+        }
+    } catch (error) {
+        console.error('Failed to load username:', error);
+        // Fallback to generic welcome
+        const welcomeUsername = document.getElementById('welcome-username');
+        if (welcomeUsername) {
+            welcomeUsername.textContent = 'Friend';
+        }
+    }
+}
+
+// Load content when page loads
+window.addEventListener('DOMContentLoaded', function() {
+    displayPersonalSubtitle();
+    displayDailyQuote();
+    loadWelcomeUsername();
+});
 
 function preferenceChoice(event) {
     if (event === 1) {

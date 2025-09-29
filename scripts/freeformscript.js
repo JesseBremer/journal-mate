@@ -171,23 +171,61 @@ function viewAllEntries() {
   }
 
   function generateNewPrompt() {
-    // Array of possible placeholder values
+    // Psychology-backed prompts for enhanced well-being and self-reflection
     let placeholders = [
-        "How am I feeling today?",
-    "How does my body feel today?",
-    "What am I nervous or anxious about today?",
-    "What actions can I take on each of the things that make me nervous or anxious?",
-    "What are my top priorities for the day?",
-    "What’s something I can do to make today amazing?",
-    "What did I learn today? How can I apply this knowledge in the future?",
-    "What challenges did I face today? How did I overcome them? What can I learn from these experiences?",
-    "What did I do today that brought me joy or fulfillment? How can I incorporate more of these activities into my daily routine?",
-    "What was a moment of joy, delight, or contentment today?",
-    "What was a small detail I noticed today?",
-    "What was the weather like today?",
-    "What am I thankful for today?",
-    "What could I have done differently today?",
-    "How can I make tomorrow even better?"
+        // Gratitude & Positive Psychology
+        "Write about three things you're genuinely grateful for today and why they matter to you.",
+        "Describe a moment today when you felt truly alive and engaged. What were you doing?",
+        "What strengths did you use today? How did they help you navigate your day?",
+        "Write about someone who made your day better, even in a small way.",
+
+        // Emotional Intelligence & Self-Awareness
+        "What emotions have you experienced today? Describe them without judgment.",
+        "Write about a time today when you felt completely yourself. What was happening?",
+        "What patterns do you notice in your thoughts or reactions today?",
+        "Describe a challenging emotion you felt today. What was it trying to tell you?",
+
+        // Growth Mindset & Learning
+        "What did you learn about yourself today, even from small interactions?",
+        "Describe a mistake or setback today. What growth opportunity does it offer?",
+        "What's one thing you did today that moved you closer to who you want to become?",
+        "Write about a moment when you stepped outside your comfort zone today.",
+
+        // Meaning & Purpose (Values-based)
+        "How did your actions today align with what you value most in life?",
+        "What gave your day meaning, even if it seemed ordinary?",
+        "Describe a moment when you acted in accordance with your deepest values.",
+        "What legacy are you building through your daily choices?",
+
+        // Mindfulness & Present Moment
+        "Describe the most beautiful or interesting thing you noticed today using all your senses.",
+        "Write about a moment today when you felt completely present. What anchored you there?",
+        "What textures, sounds, or smells stood out to you today?",
+        "Describe your breathing right now. How does your body feel in this moment?",
+
+        // Relationships & Connection
+        "How did you connect with others today, even in small ways?",
+        "Write about a conversation that energized or inspired you today.",
+        "What did you learn about someone else today that you didn't know before?",
+        "How did you show care or kindness to yourself or others today?",
+
+        // Self-Compassion & Acceptance
+        "If your best friend had your exact day, what would you tell them?",
+        "What would you like to forgive yourself for from today?",
+        "Describe how you treated yourself today. What do you notice?",
+        "Write yourself a note of encouragement for tomorrow.",
+
+        // Future Self & Intention
+        "What do you want to remember about today when you look back in a year?",
+        "What intention do you want to set for tomorrow based on today's experiences?",
+        "How did today contribute to the person you're becoming?",
+        "What question do you want to explore further tomorrow?",
+
+        // Creativity & Wonder
+        "What sparked your curiosity today? What made you wonder?",
+        "Describe today as if you were writing a story. What was the plot?",
+        "What would you do differently if you lived today again?",
+        "If today had a soundtrack, what would it be and why?"
     ];
 
     // Get the textbox element by its ID
