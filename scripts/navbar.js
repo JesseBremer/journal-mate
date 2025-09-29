@@ -89,5 +89,34 @@ async function initNavbar() {
     }
 }
 
+// Dropdown functionality
+function toggleUserDropdown() {
+    const dropdown = document.getElementById('userDropdown');
+    if (dropdown) {
+        dropdown.classList.toggle('show');
+    }
+}
+
+// Close dropdown when clicking outside
+document.addEventListener('click', function(event) {
+    const dropdown = document.getElementById('userDropdown');
+    const usernameElement = document.querySelector('.navbar-username');
+
+    if (dropdown && usernameElement &&
+        !dropdown.contains(event.target) &&
+        !usernameElement.contains(event.target)) {
+        dropdown.classList.remove('show');
+    }
+});
+
+// Navigation functions
+function goToEntries() {
+    window.location.href = '/pages/journal-entries.html';
+}
+
+function goToAbout() {
+    window.location.href = '/pages/about.html';
+}
+
 // Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', initNavbar);

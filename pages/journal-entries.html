@@ -12,10 +12,12 @@
         <div class="navbar-content">
             <a href="/pages/selectionpage.html" class="navbar-brand">Journal-Mate</a>
             <div class="navbar-user">
-                <span class="navbar-username">Loading...</span>
-                <div class="navbar-menu">
-                    <button class="navbar-btn" onclick="logout()">Logout</button>
-                    <button class="navbar-btn danger" onclick="deleteAccount()">Delete Account</button>
+                <div class="username-dropdown">
+                    <span class="navbar-username" onclick="toggleUserDropdown()">Loading...</span>
+                    <div class="dropdown-menu" id="userDropdown">
+                        <button class="dropdown-item danger" onclick="deleteAccount()">Delete Account</button>
+                        <button class="dropdown-item" onclick="logout()">Logout</button>
+                    </div>
                 </div>
             </div>
         </div>

@@ -3,20 +3,24 @@ body {
     background: linear-gradient(135deg, #d4b896 0%, #c9a876 50%, #b8956a 100%);
     margin: 0;
     padding: 0;
-    min-height: 100vh;
+    height: 100vh;
+    overflow: hidden;
   }
 
   .selection-content {
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-height: calc(100vh - 80px); /* Account for navbar */
-    padding: 40px 20px;
+    justify-content: space-between;
+    height: calc(100vh - 80px); /* Account for navbar */
+    padding: 15px 20px 0 20px;
+    overflow: hidden;
   }
 
   .welcome-section {
     text-align: center;
-    margin-bottom: 50px;
+    margin-bottom: 10px;
+    flex-shrink: 0;
   }
 
   .welcome-title {
@@ -37,33 +41,77 @@ body {
     opacity: 0.9;
   }
 
-  .welcome-description {
-    color: rgba(93, 64, 55, 0.8);
-    font-family: 'Georgia', serif;
-    font-size: 1em;
-    max-width: 600px;
+  /* Daily quote styling */
+  .daily-quote {
+    margin: 10px auto 15px auto;
+    max-width: 500px;
+    position: relative;
+    text-align: center;
+  }
+
+  .daily-quote::before {
+    content: '"';
+    position: absolute;
+    top: -40px;
+    left: 0;
+    font-size: 5em;
+    color: rgba(93, 64, 55, 0.15);
+    font-family: Georgia, serif;
+    font-weight: bold;
+  }
+
+  .daily-quote::after {
+    content: '"';
+    position: absolute;
+    bottom: -40px;
+    right: 0;
+    font-size: 5em;
+    color: rgba(93, 64, 55, 0.15);
+    font-family: Georgia, serif;
+    font-weight: bold;
+  }
+
+  .quote-text {
+    color: #5d4037;
+    font-size: 1.2em;
+    font-style: italic;
     line-height: 1.6;
-    margin: 0 auto;
+    margin: 0 0 20px 0;
+    text-align: center;
+    font-weight: normal;
+    text-shadow: 0 1px 2px rgba(139, 108, 66, 0.1);
+  }
+
+  .quote-author {
+    color: #8d6e63;
+    font-size: 1em;
+    font-weight: normal;
+    margin: 0;
+    text-align: center;
+    font-style: normal;
+    opacity: 0.85;
   }
 
   .card-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    max-width: 1000px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 900px;
     width: 100%;
+    flex: 1;
+    align-items: center;
   }
 
   .card {
     cursor: pointer;
-    padding: 40px 30px;
+    padding: 20px 18px;
     background: linear-gradient(145deg, #f4ead5 0%, #f0e4c1 30%, #eadc9f 100%);
     border: 2px solid rgba(139, 108, 66, 0.3);
-    border-radius: 16px;
+    border-radius: 12px;
     text-align: center;
     transition: all 0.3s ease;
     box-shadow:
-      0 8px 32px rgba(139, 108, 66, 0.3),
+      0 6px 24px rgba(139, 108, 66, 0.3),
       inset 0 1px 0 rgba(255, 255, 255, 0.4),
       0 2px 4px rgba(139, 108, 66, 0.2);
     position: relative;
@@ -84,8 +132,8 @@ body {
   .card h3 {
     color: #5d4037;
     font-family: 'Georgia', serif;
-    font-size: 2em;
-    margin-bottom: 20px;
+    font-size: 1.6em;
+    margin-bottom: 15px;
     text-shadow: 0 1px 2px rgba(139, 108, 66, 0.1);
     position: relative;
   }
@@ -93,15 +141,15 @@ body {
   .card p {
     color: #6d4c41;
     font-family: 'Georgia', serif;
-    font-size: 1.1em;
-    line-height: 1.6;
+    font-size: 0.95em;
+    line-height: 1.5;
     margin: 0;
     opacity: 0.9;
   }
 
   .card-icon {
-    font-size: 3em;
-    margin-bottom: 20px;
+    font-size: 2.5em;
+    margin-bottom: 15px;
     opacity: 0.7;
     transition: opacity 0.3s ease;
   }
@@ -126,6 +174,76 @@ body {
 
   .card:active {
     transform: translateY(-6px) scale(1.01);
+  }
+
+  /* Featured card styling for Flowform */
+  .featured-card {
+    border: 3px solid rgba(139, 108, 66, 0.5) !important;
+    box-shadow:
+      0 12px 40px rgba(139, 108, 66, 0.4),
+      inset 0 2px 0 rgba(255, 255, 255, 0.6),
+      0 4px 8px rgba(139, 108, 66, 0.3) !important;
+  }
+
+  .featured-card::before {
+    height: 6px !important;
+    background: linear-gradient(90deg, #2196f3 0%, #4caf50 50%, #ff9800 100%) !important;
+  }
+
+  /* Navbar navigation styling */
+  .navbar-nav {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-left: auto;
+    margin-right: 20px;
+  }
+
+  .nav-link {
+    background: transparent !important;
+    color: #f4ead5 !important;
+    border: 1px solid rgba(244, 234, 213, 0.3) !important;
+    padding: 8px 16px !important;
+    font-size: 14px !important;
+    transition: all 0.3s ease !important;
+  }
+
+  .nav-link:hover {
+    background: rgba(244, 234, 213, 0.1) !important;
+    border-color: rgba(244, 234, 213, 0.6) !important;
+    transform: translateY(-1px) !important;
+  }
+
+  /* Footer styling */
+  .footer-section {
+    text-align: center;
+    padding: 8px 20px 5px 20px;
+    border-top: 1px solid rgba(139, 108, 66, 0.2);
+    flex-shrink: 0;
+  }
+
+  .footer-link {
+    background: transparent;
+    border: none;
+    color: rgba(93, 64, 55, 0.7);
+    font-family: 'Georgia', serif;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 10px 20px;
+    border-radius: 8px;
+    display: inline-block;
+  }
+
+  .footer-link:hover {
+    color: #5d4037;
+    background: rgba(139, 108, 66, 0.1);
+    transform: translateY(-1px);
+  }
+
+  .footer-icon {
+    font-size: 18px;
+    opacity: 0.8;
   }
 
   /* Mobile responsive */
@@ -163,4 +281,32 @@ body {
     .card-icon {
       font-size: 2.5em;
     }
+
+    /* Mobile navbar adjustments */
+    .navbar-nav {
+      margin-right: 10px;
+    }
+
+    .nav-link {
+      padding: 6px 12px !important;
+      font-size: 12px !important;
+    }
+
+    .footer-section {
+      margin-top: 40px;
+      padding: 20px 15px;
+    }
+
+    .footer-link {
+      font-size: 14px;
+    }
+  }
+
+  /* About card styling */
+  .about-card {
+    border-left: 4px solid rgba(139, 108, 66, 0.4) !important;
+  }
+
+  .about-card:hover {
+    border-left-color: rgba(139, 108, 66, 0.6) !important;
   }

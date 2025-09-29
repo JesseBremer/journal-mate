@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/navbar.css">
+    <link rel="stylesheet" href="/stylesheets/roteform.css">
+    <title>Roteform - Journal-Mate</title>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="navbar-content">
+            <a href="/pages/selectionpage.html" class="navbar-brand">Journal-Mate</a>
+            <div class="navbar-nav">
+                <button class="navbar-btn nav-link" onclick="goToEntries()">📚 My Entries</button>
+            </div>
+            <div class="navbar-user">
+                <div class="username-dropdown">
+                    <span class="navbar-username" onclick="toggleUserDropdown()">Loading...</span>
+                    <div class="dropdown-menu" id="userDropdown">
+                        <button class="dropdown-item danger" onclick="deleteAccount()">Delete Account</button>
+                        <button class="dropdown-item" onclick="logout()">Logout</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="roteform-content">
+        <div class="form-container">
+            <div class="form-header">
+                <h1>Daily Reflection</h1>
+                <p class="form-subtitle">Research-backed questions for optimal well-being and self-awareness</p>
+                <p class="entry-date" id="entryDate">Today's Entry</p>
+            </div>
+
+            <form id="roteForm" class="journal-form">
+                <!-- Question 1: Gratitude (Positive Psychology) -->
+                <div class="question-section">
+                    <label for="gratitude" class="question-label">
+                        <span class="question-number">1.</span>
+                        What are three things you're grateful for today, and why?
+                    </label>
+                    <textarea
+                        id="gratitude"
+                        name="gratitude"
+                        class="question-input"
+                        placeholder="List three specific things you appreciated today and explain what made them meaningful to you..."
+                        rows="3"
+                    ></textarea>
+                </div>
+
+                <!-- Question 2: Emotional Awareness (Emotional Intelligence) -->
+                <div class="question-section">
+                    <label for="emotions" class="question-label">
+                        <span class="question-number">2.</span>
+                        What emotions did you experience today, and what triggered them?
+                    </label>
+                    <textarea
+                        id="emotions"
+                        name="emotions"
+                        class="question-input"
+                        placeholder="Notice and name your emotions, then reflect on what situations or thoughts brought them up..."
+                        rows="3"
+                    ></textarea>
+                </div>
+
+                <!-- Question 3: Values Alignment (Self-Determination Theory) -->
+                <div class="question-section">
+                    <label for="values" class="question-label">
+                        <span class="question-number">3.</span>
+                        How did today connect to what matters most to you?
+                    </label>
+                    <textarea
+                        id="values"
+                        name="values"
+                        class="question-input"
+                        placeholder="Reflect on moments when you felt aligned with your core values or what gives your life meaning..."
+                        rows="3"
+                    ></textarea>
+                </div>
+
+                <!-- Question 4: Growth Mindset (Resilience Research) -->
+                <div class="question-section">
+                    <label for="growth" class="question-label">
+                        <span class="question-number">4.</span>
+                        What challenge helped you grow today, and what did you learn?
+                    </label>
+                    <textarea
+                        id="growth"
+                        name="growth"
+                        class="question-input"
+                        placeholder="Describe a difficulty you faced and focus on what it taught you or how it helped you develop..."
+                        rows="3"
+                    ></textarea>
+                </div>
+
+                <!-- Question 5: Social Connection (Relationship Research) -->
+                <div class="question-section">
+                    <label for="connection" class="question-label">
+                        <span class="question-number">5.</span>
+                        How did you connect meaningfully with others today?
+                    </label>
+                    <textarea
+                        id="connection"
+                        name="connection"
+                        class="question-input"
+                        placeholder="Reflect on moments of genuine connection, kindness given or received, or quality time shared..."
+                        rows="3"
+                    ></textarea>
+                </div>
+
+                <!-- Question 6: Self-Compassion (Clinical Psychology) -->
+                <div class="question-section">
+                    <label for="compassion" class="question-label">
+                        <span class="question-number">6.</span>
+                        What would you say to a good friend who had your day?
+                    </label>
+                    <textarea
+                        id="compassion"
+                        name="compassion"
+                        class="question-input"
+                        placeholder="Practice self-compassion by considering what supportive, understanding words you'd offer a friend..."
+                        rows="3"
+                    ></textarea>
+                </div>
+
+                <!-- Question 7: Narrative Identity (Meaning-Making Research) -->
+                <div class="question-section">
+                    <label for="story" class="question-label">
+                        <span class="question-number">7.</span>
+                        What story would today tell about who you're becoming?
+                    </label>
+                    <textarea
+                        id="story"
+                        name="story"
+                        class="question-input"
+                        placeholder="Consider how today's experiences fit into your larger life narrative and personal growth journey..."
+                        rows="3"
+                    ></textarea>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="form-actions">
+                    <button type="button" class="action-btn save-draft-btn" onclick="saveDraft()">
+                        Save Draft
+                    </button>
+                    <button type="button" class="action-btn save-final-btn" onclick="saveEntry()">
+                        Save Entry
+                    </button>
+                    <button type="button" class="action-btn back-btn" onclick="goBack()">
+                        ← Back to Selection
+                    </button>
+                </div>
+            </form>
+
+            <!-- Progress Indicator -->
+            <div class="progress-container">
+                <div class="progress-text">Progress: <span id="progressText">0/7 questions answered</span></div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/scripts/navbar.js"></script>
+    <script src="/scripts/roteform.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,206 @@
+body {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  background: linear-gradient(135deg, #d4b896 0%, #c9a876 50%, #b8956a 100%);
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+.about-content {
+  padding: 40px 20px;
+  min-height: calc(100vh - 80px);
+  display: flex;
+  justify-content: center;
+}
+
+.about-container {
+  background: linear-gradient(145deg, #f4ead5 0%, #f0e4c1 30%, #eadc9f 100%);
+  border-radius: 15px;
+  padding: 50px;
+  box-shadow:
+    0 12px 40px rgba(139, 108, 66, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4),
+    0 3px 6px rgba(139, 108, 66, 0.3);
+  border: 2px solid rgba(139, 108, 66, 0.2);
+  max-width: 800px;
+  width: 100%;
+  /* Paper texture */
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(139, 108, 66, 0.1) 1px, transparent 0);
+  background-size: 20px 20px;
+}
+
+.about-header {
+  text-align: center;
+  margin-bottom: 50px;
+  border-bottom: 3px solid rgba(139, 108, 66, 0.3);
+  padding-bottom: 30px;
+}
+
+.about-header h1 {
+  color: #5d4037;
+  font-size: 3em;
+  font-weight: normal;
+  margin: 0 0 15px 0;
+  text-shadow: 0 2px 4px rgba(139, 108, 66, 0.2);
+}
+
+.tagline {
+  color: #8d6e63;
+  font-size: 1.3em;
+  font-style: italic;
+  margin: 0;
+}
+
+.about-section {
+  margin-bottom: 40px;
+}
+
+.about-section h2 {
+  color: #5d4037;
+  font-size: 1.8em;
+  font-weight: normal;
+  margin-bottom: 20px;
+  border-left: 4px solid rgba(139, 108, 66, 0.5);
+  padding-left: 20px;
+}
+
+.about-section p {
+  color: #4a2c20;
+  font-size: 1.1em;
+  line-height: 1.7;
+  margin-bottom: 15px;
+}
+
+.method-card {
+  background: linear-gradient(145deg, #faf6e8 0%, #f8f3e8 100%);
+  border: 2px solid rgba(139, 108, 66, 0.2);
+  border-radius: 12px;
+  padding: 25px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 12px rgba(139, 108, 66, 0.15);
+  transition: transform 0.3s ease;
+}
+
+.method-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(139, 108, 66, 0.25);
+}
+
+.method-icon {
+  font-size: 2.5em;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.method-card h3 {
+  color: #5d4037;
+  font-size: 1.4em;
+  font-weight: normal;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.method-card p {
+  font-size: 1em;
+  text-align: justify;
+}
+
+.features-list {
+  color: #4a2c20;
+  font-size: 1.1em;
+  line-height: 1.8;
+  padding-left: 0;
+  list-style: none;
+}
+
+.features-list li {
+  margin-bottom: 12px;
+  padding-left: 25px;
+  position: relative;
+}
+
+.features-list li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: #8bc34a;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+blockquote {
+  background: linear-gradient(145deg, #f8f3e8 0%, #f4ead5 100%);
+  border-left: 5px solid rgba(139, 108, 66, 0.5);
+  margin: 30px 0;
+  padding: 25px 30px;
+  border-radius: 8px;
+  font-style: italic;
+  font-size: 1.2em;
+  color: #5d4037;
+  box-shadow: 0 3px 8px rgba(139, 108, 66, 0.15);
+}
+
+blockquote cite {
+  display: block;
+  margin-top: 15px;
+  font-size: 0.9em;
+  color: #8d6e63;
+  font-weight: normal;
+}
+
+.back-section {
+  text-align: center;
+  margin-top: 50px;
+  padding-top: 30px;
+  border-top: 2px solid rgba(139, 108, 66, 0.2);
+}
+
+.back-button {
+  background: linear-gradient(145deg, #b39ddb 0%, #9575cd 50%, #7e57c2 100%);
+  color: #faf6e8;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 8px;
+  font-family: 'Georgia', serif;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(139, 108, 66, 0.3);
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.back-button:hover {
+  background: linear-gradient(145deg, #c5a5f0 0%, #b39ddb 50%, #9575cd 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(139, 108, 66, 0.4);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .about-container {
+    padding: 30px 25px;
+    margin: 20px;
+  }
+
+  .about-header h1 {
+    font-size: 2.2em;
+  }
+
+  .tagline {
+    font-size: 1.1em;
+  }
+
+  .about-section h2 {
+    font-size: 1.5em;
+  }
+
+  .method-card {
+    padding: 20px;
+  }
+
+  .method-icon {
+    font-size: 2em;
+  }
+}

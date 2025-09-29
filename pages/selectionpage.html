@@ -11,11 +11,16 @@
   <nav class="navbar">
     <div class="navbar-content">
       <a href="/pages/selectionpage.html" class="navbar-brand">Journal-Mate</a>
+      <div class="navbar-nav">
+        <button class="navbar-btn nav-link" onclick="goToEntries()">📚 My Entries</button>
+      </div>
       <div class="navbar-user">
-        <span class="navbar-username">Loading...</span>
-        <div class="navbar-menu">
-          <button class="navbar-btn" onclick="logout()">Logout</button>
-          <button class="navbar-btn danger" onclick="deleteAccount()">Delete Account</button>
+        <div class="username-dropdown">
+          <span class="navbar-username" onclick="toggleUserDropdown()">Loading...</span>
+          <div class="dropdown-menu" id="userDropdown">
+            <button class="dropdown-item danger" onclick="deleteAccount()">Delete Account</button>
+            <button class="dropdown-item" onclick="logout()">Logout</button>
+          </div>
         </div>
       </div>
     </div>
@@ -24,30 +29,40 @@
     <div class="welcome-section">
       <h1 class="welcome-title">Welcome to Journal-Mate</h1>
       <p class="welcome-subtitle">Your Digital Journaling Companion</p>
-      <p class="welcome-description">Choose your preferred way to capture thoughts, memories, and reflections. Each approach offers a unique journaling experience tailored to different moods and moments.</p>
+      <div class="daily-quote">
+        <p id="quote-text" class="quote-text">Loading inspiring quote...</p>
+        <p id="quote-author" class="quote-author">— Daily Inspiration</p>
+      </div>
     </div>
 
     <div class="card-container">
-      <!-- Card 1 -->
+      <!-- Card 1: Roteform - Research-backed -->
       <div class="card" onclick="preferenceChoice(1)">
+        <div class="card-icon">📋</div>
+        <h3>Roteform</h3>
+        <p>Research-backed reflection through seven scientifically-proven questions designed for optimal well-being. Perfect for those who want structured, meaningful daily growth.</p>
+      </div>
+
+      <!-- Card 2: Flowform - Primary journaling method (Center) -->
+      <div class="card featured-card" onclick="preferenceChoice(2)">
+        <div class="card-icon">🎯</div>
+        <h3>Flowform</h3>
+        <p>Quick daily captures through guided categories. Click through mood, events, gratitude, and more to build comprehensive daily reflections. Perfect for busy lives wanting meaningful moments.</p>
+      </div>
+
+      <!-- Card 3: Freeform - Traditional -->
+      <div class="card" onclick="preferenceChoice(3)">
         <div class="card-icon">📝</div>
         <h3>Freeform</h3>
         <p>Traditional journaling with complete creative freedom. Write your thoughts naturally on lined parchment pages with helpful prompts when inspiration runs low.</p>
       </div>
+    </div>
 
-      <!-- Card 2 -->
-      <div class="card" onclick="preferenceChoice(2)">
-        <div class="card-icon">🎯</div>
-        <h3>Flowform</h3>
-        <p>Structured daily capture through guided prompts. Click through categories like mood, events, and gratitude to build comprehensive daily reflections.</p>
-      </div>
-
-      <!-- Card 3 -->
-      <div class="card" onclick="preferenceChoice(3)">
-        <div class="card-icon">📚</div>
-        <h3>My Entries</h3>
-        <p>Browse, search, and manage your complete journal history. Read past entries, edit reflections, and download your complete journal as a PDF.</p>
-      </div>
+    <!-- Footer -->
+    <div class="footer-section">
+      <button class="footer-link" onclick="goToAbout()">
+        About
+      </button>
     </div>
   </div>
 

@@ -322,6 +322,91 @@ app.delete('/api/entries/:id', requireAuth, (req, res) => {
   );
 });
 
+// Additional journal-entries API endpoints for compatibility
+app.get('/api/journal-entries', requireAuth, (req, res) => {
+  db.all(
+    "SELECT * FROM journal_entries WHERE user_id = ? ORDER BY created_at DESC",
+    [req.session.userId],
+    (err, rows) => {
+      if (err) {
+        return res.status(500).json({ error: 'Database error' });
+      }
+
+      // Parse content field if it's JSON for structured entries
+      const entries = rows.map(row => {
+        try {
+          const parsedContent = JSON.parse(row.content);
+          return {
+            ...row,
+            content: parsedContent,
+            type: parsedContent.type || 'freeform',
+            date: parsedContent.date || row.created_at.split('T')[0]
+          };
+        } catch (e) {
+          return {
+            ...row,
+            type: 'freeform',
+            date: row.created_at.split('T')[0]
+          };
+        }
+      });
+
+      res.json(entries);
+    }
+  );
+});
+
+app.post('/api/journal-entries', requireAuth, (req, res) => {
+  const entryData = req.body;
+
+  if (!entryData.title || !entryData.content) {
+    return res.status(400).json({ error: 'Title and content are required' });
+  }
+
+  // Store the entire entry data as JSON
+  const contentStr = JSON.stringify(entryData);
+
+  db.run(
+    "INSERT INTO journal_entries (user_id, title, content) VALUES (?, ?, ?)",
+    [req.session.userId, entryData.title, contentStr],
+    function(err) {
+      if (err) {
+        return res.status(500).json({ error: 'Database error' });
+      }
+      res.json({
+        success: true,
+        id: this.lastID,
+        message: 'Entry saved successfully'
+      });
+    }
+  );
+});
+
+app.put('/api/journal-entries/:id', requireAuth, (req, res) => {
+  const entryData = req.body;
+
+  if (!entryData.title || !entryData.content) {
+    return res.status(400).json({ error: 'Title and content are required' });
+  }
+
+  // Store the entire entry data as JSON
+  const contentStr = JSON.stringify(entryData);
+
+  db.run(
+    "UPDATE journal_entries SET title = ?, content = ?, updated_at = CURRENT_TIMESTAMP WHERE id = ? AND user_id = ?",
+    [entryData.title, contentStr, req.params.id, req.session.userId],
+    function(err) {
+      if (err) {
+        return res.status(500).json({ error: 'Database error' });
+      }
+      if (this.changes === 0) {
+        return res.status(404).json({ error: 'Entry not found' });
+      }
+      res.json({ success: true, message: 'Entry updated successfully' });
+    }
+  );
+});
+
 // Serve the main application
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));

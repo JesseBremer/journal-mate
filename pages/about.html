@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/stylesheets/navbar.css">
+  <link rel="stylesheet" href="/stylesheets/about.css">
+  <title>About - Journal-Mate</title>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="navbar-content">
+      <a href="/pages/selectionpage.html" class="navbar-brand">Journal-Mate</a>
+      <div class="navbar-nav">
+        <button class="navbar-btn nav-link" onclick="goToEntries()">📚 My Entries</button>
+      </div>
+      <div class="navbar-user">
+        <div class="username-dropdown">
+          <span class="navbar-username" onclick="toggleUserDropdown()">Loading...</span>
+          <div class="dropdown-menu" id="userDropdown">
+            <button class="dropdown-item danger" onclick="deleteAccount()">Delete Account</button>
+            <button class="dropdown-item" onclick="logout()">Logout</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="about-content">
+    <div class="about-container">
+      <div class="about-header">
+        <h1>About Journal-Mate</h1>
+        <p class="tagline">Your Digital Journaling Companion</p>
+      </div>
+
+      <div class="about-section">
+        <h2>What is Journal-Mate?</h2>
+        <p>Journal-Mate is designed to make journaling accessible, enjoyable, and scientifically meaningful. Whether you prefer free-flowing thoughts, quick daily captures, or research-backed structured reflection, we provide the tools to capture your life's moments in the way that feels most natural to you while maximizing the psychological benefits of regular journaling.</p>
+      </div>
+
+      <div class="about-section">
+        <h2>Journaling Methods</h2>
+
+        <div class="method-card">
+          <div class="method-icon">📝</div>
+          <h3>Freeform Journaling</h3>
+          <p>Traditional journaling with complete creative freedom. Write your thoughts naturally on lined parchment pages with helpful prompts when inspiration runs low. Perfect for processing emotions, recording experiences, and exploring ideas without constraints.</p>
+        </div>
+
+        <div class="method-card">
+          <div class="method-icon">📋</div>
+          <h3>Roteform Journaling</h3>
+          <p>Research-backed reflection through seven scientifically-proven questions designed for optimal well-being. Based on positive psychology, emotional intelligence, and clinical research, these questions help build gratitude, self-awareness, resilience, and personal growth. Perfect for those who want structured, meaningful daily reflection.</p>
+        </div>
+
+        <div class="method-card">
+          <div class="method-icon">🎯</div>
+          <h3>Flowform Journaling</h3>
+          <p>Structured daily capture through guided prompts. Click through categories like mood, events, and gratitude to build comprehensive daily reflections. Ideal for busy lives where you want to capture moments quickly but meaningfully throughout the day.</p>
+        </div>
+
+        <div class="method-card">
+          <div class="method-icon">📚</div>
+          <h3>Your Journal Collection</h3>
+          <p>Browse, search, and manage your complete journal history. Read past entries in beautiful scrapbook format, edit reflections, and download your complete journal as a professionally formatted PDF. Your memories, preserved and accessible.</p>
+        </div>
+      </div>
+
+      <div class="about-section">
+        <h2>The Science Behind Roteform</h2>
+        <p>Roteform's seven questions are carefully selected from decades of psychological research on well-being, personal growth, and mental health:</p>
+
+        <div class="method-card">
+          <h3>Research-Backed Questions</h3>
+          <ul class="features-list">
+            <li><strong>Gratitude Practice:</strong> Proven to increase life satisfaction by up to 25% (Seligman et al.)</li>
+            <li><strong>Emotional Awareness:</strong> Core component of emotional intelligence and mental health</li>
+            <li><strong>Values Alignment:</strong> Critical for intrinsic motivation and life satisfaction (Self-Determination Theory)</li>
+            <li><strong>Growth Mindset:</strong> Builds resilience and promotes learning from challenges (Dweck)</li>
+            <li><strong>Social Connection:</strong> Essential for longevity and psychological well-being (Harvard Study of Adult Development)</li>
+            <li><strong>Self-Compassion:</strong> Reduces anxiety and increases psychological resilience (Kristin Neff)</li>
+            <li><strong>Narrative Identity:</strong> Helps create coherent sense of self and purpose (Dan McAdams)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="about-section">
+        <h2>Features</h2>
+        <ul class="features-list">
+          <li><strong>Three Journaling Formats:</strong> Choose between freeform writing, structured daily tracking, and research-backed reflection</li>
+          <li><strong>Visual Memories:</strong> Upload and organize photos with your journal entries</li>
+          <li><strong>Mood Tracking:</strong> Quick emotional check-ins with context and reflection</li>
+          <li><strong>Auto-Save:</strong> Never lose your thoughts with automatic daily preservation</li>
+          <li><strong>Beautiful Export:</strong> Download professional PDFs with embedded photos</li>
+          <li><strong>Privacy First:</strong> Your personal reflections stored securely</li>
+          <li><strong>Search & Browse:</strong> Find past entries and track your growth over time</li>
+          <li><strong>Scientific Foundation:</strong> Questions designed by psychological research for optimal well-being</li>
+        </ul>
+      </div>
+
+      <div class="about-section">
+        <h2>Why Journal?</h2>
+        <p>Journaling has been proven to reduce stress, improve mental clarity, enhance creativity, and help process life experiences. Research shows that regular journaling can boost immune function, reduce symptoms of depression and anxiety, and improve overall life satisfaction. Journal-Mate makes it easier to build this beneficial habit by removing barriers and providing scientifically-optimized prompts for maximum psychological benefit.</p>
+
+        <blockquote>
+          "Expressive writing can help people process difficult experiences and emotions, leading to improved physical and mental health outcomes."
+          <cite>— Dr. James Pennebaker, Pioneer of Expressive Writing Research</cite>
+        </blockquote>
+      </div>
+
+      <div class="back-section">
+        <button class="back-button" onclick="goBack()">← Back to Journal</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="/scripts/navbar.js"></script>
+  <script>
+    function goBack() {
+      window.location.href = '/pages/selectionpage.html';
+    }
+  </script>
+</body>
+</html>

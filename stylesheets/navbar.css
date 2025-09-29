@@ -42,6 +42,73 @@
 .navbar-username {
     font-style: italic;
     opacity: 0.9;
+    cursor: pointer;
+    padding: 6px 12px;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    user-select: none;
+}
+
+.navbar-username:hover {
+    background: rgba(255, 255, 255, 0.1);
+    opacity: 1;
+}
+
+/* Username dropdown styling */
+.username-dropdown {
+    position: relative;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: linear-gradient(145deg, #6d4c41 0%, #5d4037 100%);
+    border: 1px solid rgba(139, 108, 66, 0.3);
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    min-width: 150px;
+    z-index: 1000;
+    display: none;
+    overflow: hidden;
+    margin-top: 5px;
+}
+
+.dropdown-menu.show {
+    display: block;
+}
+
+.dropdown-item {
+    width: 100%;
+    background: transparent;
+    color: #faf6e8;
+    border: none;
+    padding: 10px 15px;
+    font-family: 'Georgia', serif;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: left;
+    border-bottom: 1px solid rgba(139, 108, 66, 0.2);
+}
+
+.dropdown-item:last-child {
+    border-bottom: none;
+}
+
+.dropdown-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+.dropdown-item.danger {
+    color: #f44336;
+    background: rgba(211, 47, 47, 0.1);
+}
+
+.dropdown-item.danger:hover {
+    background: rgba(211, 47, 47, 0.4);
+    color: #fff;
 }
 
 .navbar-menu {
