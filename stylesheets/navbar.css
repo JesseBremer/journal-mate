@@ -1,0 +1,116 @@
+.navbar {
+    background: linear-gradient(145deg, #8d6e63 0%, #795548 100%);
+    padding: 12px 20px;
+    border-bottom: 2px solid rgba(139, 108, 66, 0.3);
+    box-shadow: 0 2px 8px rgba(139, 108, 66, 0.2);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    margin-bottom: 20px;
+}
+
+.navbar-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-brand {
+    color: #faf6e8;
+    font-family: 'Georgia', serif;
+    font-size: 1.4em;
+    font-weight: normal;
+    text-decoration: none;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.navbar-brand:hover {
+    color: #fff;
+    text-decoration: none;
+}
+
+.navbar-user {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: #faf6e8;
+    font-family: 'Georgia', serif;
+}
+
+.navbar-username {
+    font-style: italic;
+    opacity: 0.9;
+}
+
+.navbar-menu {
+    display: flex;
+    gap: 10px;
+}
+
+.navbar-btn {
+    background: linear-gradient(145deg, #6d4c41 0%, #5d4037 100%);
+    color: #faf6e8;
+    border: 1px solid rgba(139, 108, 66, 0.3);
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-family: 'Georgia', serif;
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.navbar-btn:hover {
+    background: linear-gradient(145deg, #795548 0%, #6d4c41 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(139, 108, 66, 0.3);
+    color: #fff;
+    text-decoration: none;
+}
+
+.navbar-btn:active {
+    transform: translateY(0);
+}
+
+.navbar-btn.danger {
+    background: linear-gradient(145deg, #d32f2f 0%, #b71c1c 100%);
+    border-color: rgba(211, 47, 47, 0.3);
+}
+
+.navbar-btn.danger:hover {
+    background: linear-gradient(145deg, #f44336 0%, #d32f2f 100%);
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 10px 15px;
+    }
+
+    .navbar-content {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .navbar-brand {
+        font-size: 1.2em;
+    }
+
+    .navbar-user {
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+    }
+
+    .navbar-menu {
+        gap: 8px;
+    }
+
+    .navbar-btn {
+        font-size: 12px;
+        padding: 5px 10px;
+    }
+}

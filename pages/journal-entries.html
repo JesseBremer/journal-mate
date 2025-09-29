@@ -3,11 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/navbar.css">
     <link rel="stylesheet" href="/stylesheets/journal-entries.css">
     <title>My Journal Entries - Journal-Mate</title>
 </head>
 <body>
-    <div class="entries-container">
+    <nav class="navbar">
+        <div class="navbar-content">
+            <a href="/pages/selectionpage.html" class="navbar-brand">Journal-Mate</a>
+            <div class="navbar-user">
+                <span class="navbar-username">Loading...</span>
+                <div class="navbar-menu">
+                    <button class="navbar-btn" onclick="logout()">Logout</button>
+                    <button class="navbar-btn danger" onclick="deleteAccount()">Delete Account</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="journal-entries-content">
+        <div class="entries-container">
         <h2>My Journal Entries</h2>
 
         <div class="entries-controls">
@@ -29,9 +43,11 @@
             <p>You haven't written any journal entries yet!</p>
             <button type="button" onclick="goToFreeform()">Write Your First Entry</button>
         </div>
+        </div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="/scripts/navbar.js"></script>
     <script src="/scripts/journal-entries.js"></script>
 </body>
 </html>

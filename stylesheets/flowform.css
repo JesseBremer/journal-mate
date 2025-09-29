@@ -1,11 +1,16 @@
 body {
     font-family: 'Georgia', 'Times New Roman', serif;
     background: linear-gradient(135deg, #d4b896 0%, #c9a876 50%, #b8956a 100%);
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+  }
+
+  .flowform-content {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-    margin: 0;
+    min-height: calc(100vh - 80px); /* Account for navbar */
     padding: 20px;
   }
 

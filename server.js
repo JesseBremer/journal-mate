@@ -6,7 +6,7 @@ const cors = require('cors');
 const path = require('path');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 
 // Middleware
 app.use(cors({
@@ -91,6 +91,60 @@ function requireAuth(req, res, next) {
 // API Routes
 
 // User authentication
+app.post('/api/register', (req, res) => {
+  const { username, password } = req.body;
+
+  // Validation
+  if (!username || !password) {
+    return res.status(400).json({ error: 'Username and password are required' });
+  }
+
+  if (username.length < 3 || username.length > 30) {
+    return res.status(400).json({ error: 'Username must be between 3 and 30 characters long' });
+  }
+
+  if (!/^[a-zA-Z0-9]+$/.test(username)) {
+    return res.status(400).json({ error: 'Username can only contain letters and numbers' });
+  }
+
+  if (password.length < 6) {
+    return res.status(400).json({ error: 'Password must be at least 6 characters long' });
+  }
+
+  // Check if username already exists
+  db.get("SELECT id FROM users WHERE username = ?", [username], (err, existingUser) => {
+    if (err) {
+      return res.status(500).json({ error: 'Database error' });
+    }
+
+    if (existingUser) {
+      return res.status(409).json({ error: 'Username already exists' });
+    }
+
+    // Hash password and create user
+    const passwordHash = bcrypt.hashSync(password, 10);
+
+    db.run("INSERT INTO users (username, password_hash) VALUES (?, ?)",
+      [username, passwordHash],
+      function(err) {
+        if (err) {
+          return res.status(500).json({ error: 'Failed to create account' });
+        }
+
+        // Automatically log in the user
+        req.session.userId = this.lastID;
+        req.session.username = username;
+
+        res.json({
+          success: true,
+          user: { id: this.lastID, username: username },
+          message: 'Account created successfully'
+        });
+      }
+    );
+  });
+});
+
 app.post('/api/login', (req, res) => {
   const { username, password } = req.body;
 
@@ -118,6 +172,45 @@ app.post('/api/logout', (req, res) => {
       return res.status(500).json({ error: 'Could not log out' });
     }
     res.json({ success: true });
+  });
+});
+
+app.delete('/api/delete-account', requireAuth, (req, res) => {
+  const userId = req.session.userId;
+
+  // Start a transaction to delete user and all their entries
+  db.serialize(() => {
+    // Delete all journal entries for this user
+    db.run("DELETE FROM journal_entries WHERE user_id = ?", [userId], (err) => {
+      if (err) {
+        console.error('Error deleting user entries:', err);
+        return res.status(500).json({ error: 'Failed to delete account data' });
+      }
+
+      // Delete the user account
+      db.run("DELETE FROM users WHERE id = ?", [userId], function(err) {
+        if (err) {
+          console.error('Error deleting user account:', err);
+          return res.status(500).json({ error: 'Failed to delete account' });
+        }
+
+        if (this.changes === 0) {
+          return res.status(404).json({ error: 'User not found' });
+        }
+
+        // Destroy the session
+        req.session.destroy((err) => {
+          if (err) {
+            console.error('Error destroying session:', err);
+          }
+
+          res.json({
+            success: true,
+            message: 'Account deleted successfully'
+          });
+        });
+      });
+    });
   });
 });
 

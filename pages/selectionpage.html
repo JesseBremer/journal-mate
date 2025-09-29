@@ -3,30 +3,55 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/stylesheets/navbar.css">
   <link rel="stylesheet" href="/stylesheets/selectionpage.css">
-  <title>Journal Structure</title>    
+  <title>Journal Structure</title>
 </head>
 <body>
-  <div class="card-container">
-    <!-- Card 1 -->
-    <div class="card" onclick="preferenceChoice(1)">
-      <h3>Freeform</h3>
-      <p>Journaling your way. <br>Free from any handholding.</p>
+  <nav class="navbar">
+    <div class="navbar-content">
+      <a href="/pages/selectionpage.html" class="navbar-brand">Journal-Mate</a>
+      <div class="navbar-user">
+        <span class="navbar-username">Loading...</span>
+        <div class="navbar-menu">
+          <button class="navbar-btn" onclick="logout()">Logout</button>
+          <button class="navbar-btn danger" onclick="deleteAccount()">Delete Account</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div class="selection-content">
+    <div class="welcome-section">
+      <h1 class="welcome-title">Welcome to Journal-Mate</h1>
+      <p class="welcome-subtitle">Your Digital Journaling Companion</p>
+      <p class="welcome-description">Choose your preferred way to capture thoughts, memories, and reflections. Each approach offers a unique journaling experience tailored to different moods and moments.</p>
     </div>
 
-    <!-- Card 2 -->
-    <div class="card" onclick="preferenceChoice(2)">
-      <h3>Flowform</h3>
-      <p>Click me too!</p>
-    </div>
+    <div class="card-container">
+      <!-- Card 1 -->
+      <div class="card" onclick="preferenceChoice(1)">
+        <div class="card-icon">📝</div>
+        <h3>Freeform</h3>
+        <p>Traditional journaling with complete creative freedom. Write your thoughts naturally on lined parchment pages with helpful prompts when inspiration runs low.</p>
+      </div>
 
-    <!-- Card 3 -->
-    <div class="card" onclick="preferenceChoice(3)">
-      <h3>My Entries</h3>
-      <p>View all your journal entries</p>
+      <!-- Card 2 -->
+      <div class="card" onclick="preferenceChoice(2)">
+        <div class="card-icon">🎯</div>
+        <h3>Flowform</h3>
+        <p>Structured daily capture through guided prompts. Click through categories like mood, events, and gratitude to build comprehensive daily reflections.</p>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="card" onclick="preferenceChoice(3)">
+        <div class="card-icon">📚</div>
+        <h3>My Entries</h3>
+        <p>Browse, search, and manage your complete journal history. Read past entries, edit reflections, and download your complete journal as a PDF.</p>
+      </div>
     </div>
   </div>
 
+  <script src="/scripts/navbar.js"></script>
   <script src="/scripts/selectionpage.js"></script>
 </body>
 </html>

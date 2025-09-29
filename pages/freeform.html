@@ -3,11 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/navbar.css">
     <link rel="stylesheet" href="/stylesheets/styles.css">
     <title>Journal-Mate</title>
 </head>
 <body>
-    <div class="entry-container">
+    <nav class="navbar">
+        <div class="navbar-content">
+            <a href="/pages/selectionpage.html" class="navbar-brand">Journal-Mate</a>
+            <div class="navbar-user">
+                <span class="navbar-username">Loading...</span>
+                <div class="navbar-menu">
+                    <button class="navbar-btn" onclick="logout()">Logout</button>
+                    <button class="navbar-btn danger" onclick="deleteAccount()">Delete Account</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="freeform-content">
+        <div class="entry-container">
         <h2>Entry</h2>
         <form class="entry-form" action="#" method="post">
           <div class="form-group">
@@ -26,7 +40,9 @@
             <button type="button" onclick="goBack()" class="back-button">← Back to Selection</button>
           </div>
         </form>
-      </div>
+        </div>
+    </div>
+    <script src="/scripts/navbar.js"></script>
     <script src="/scripts/freeformscript.js"></script>
 </body>
 </html>

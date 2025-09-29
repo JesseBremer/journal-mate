@@ -93,3 +93,29 @@ body {
     transform: translateY(0);
     box-shadow: 0 2px 4px rgba(139, 108, 66, 0.2);
   }
+
+  .form-link {
+    text-align: center;
+    color: #6d4c41;
+    font-size: 14px;
+    margin: 0;
+  }
+
+  .form-link a {
+    color: #8d6e63;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  .form-link a:hover {
+    color: #5d4037;
+    text-decoration: underline;
+  }
+
+  .form-group small {
+    display: block;
+    color: rgba(93, 64, 55, 0.7);
+    font-size: 12px;
+    margin-top: 4px;
+    font-style: italic;
+  }
