@@ -313,18 +313,41 @@ function previewImage(event) {
 
   const reader = new FileReader();
   reader.onload = function(e) {
-    const preview = document.getElementById('imagePreview');
-    const previewImg = document.getElementById('previewImg');
-    const dropzone = document.querySelector('.upload-dropzone');
-    const saveButton = document.getElementById('saveButton');
+    // Create an image to check orientation and correct it
+    const img = new Image();
+    img.onload = function() {
+      // Create canvas to correct orientation
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
 
-    previewImg.src = e.target.result;
-    dropzone.style.display = 'none';
-    preview.style.display = 'block';
+      // Set canvas size to match corrected orientation
+      canvas.width = this.naturalWidth;
+      canvas.height = this.naturalHeight;
 
-    // Enable save button
-    saveButton.style.opacity = '1';
-    saveButton.style.pointerEvents = 'auto';
+      // Draw image normally (browser handles EXIF orientation automatically)
+      ctx.drawImage(img, 0, 0);
+
+      // Get corrected image data
+      const correctedImageData = canvas.toDataURL('image/jpeg', 0.9);
+
+      // Display preview
+      const preview = document.getElementById('imagePreview');
+      const previewImg = document.getElementById('previewImg');
+      const dropzone = document.querySelector('.upload-dropzone');
+      const saveButton = document.getElementById('saveButton');
+
+      previewImg.src = correctedImageData;
+      dropzone.style.display = 'none';
+      preview.style.display = 'block';
+
+      // Store corrected image data for saving
+      window.correctedImageData = correctedImageData;
+
+      // Enable save button
+      saveButton.style.opacity = '1';
+      saveButton.style.pointerEvents = 'auto';
+    };
+    img.src = e.target.result;
   };
   reader.readAsDataURL(file);
 }
@@ -333,16 +356,18 @@ function previewImage(event) {
 function savePictureEntry() {
   const fileInput = document.getElementById('pictureInput');
   const caption = document.getElementById('pictureCaption').value.trim();
-  const previewImg = document.getElementById('previewImg');
 
   if (!fileInput.files[0]) {
     alert('Please select an image first.');
     return;
   }
 
+  // Use corrected image data if available, otherwise fall back to preview src
+  const imageData = window.correctedImageData || document.getElementById('previewImg').src;
+
   currentDayEntry.entries.picture.push({
     text: caption || 'Photo',
-    imageData: previewImg.src, // Base64 data URL
+    imageData: imageData, // Orientation-corrected Base64 data URL
     imageName: fileInput.files[0].name,
     timestamp: new Date().toISOString()
   });
@@ -469,27 +494,57 @@ async function saveToServer() {
   console.log('Saving to server...', currentDayEntry);
 
   try {
-    const response = await fetch('/api/entries', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      credentials: 'include', // Include cookies for session
-      body: JSON.stringify({
-        title: `Daily Journal - ${new Date(currentDayEntry.date).toLocaleDateString()}`,
-        content: JSON.stringify(currentDayEntry)
-      })
-    });
+    const entryTitle = `Daily Journal - ${new Date(currentDayEntry.date).toLocaleDateString()}`;
+
+    // First, check if an entry for today already exists
+    const existingEntry = await checkForExistingEntry(entryTitle);
+
+    let response;
+    if (existingEntry) {
+      // Update existing entry
+      response = await fetch(`/api/entries/${existingEntry.id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        credentials: 'include',
+        body: JSON.stringify({
+          title: entryTitle,
+          content: JSON.stringify(currentDayEntry)
+        })
+      });
+    } else {
+      // Create new entry
+      response = await fetch('/api/entries', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        credentials: 'include',
+        body: JSON.stringify({
+          title: entryTitle,
+          content: JSON.stringify(currentDayEntry)
+        })
+      });
+    }
 
     const responseData = await response.json();
     console.log('Server response:', response.status, responseData);
 
     if (response.ok) {
-      alert('Journal saved successfully!');
+      const savedEntry = responseData;
+      const entryId = existingEntry ? existingEntry.id : savedEntry.id;
       localStorage.removeItem(`flowform_${currentDayEntry.date}`);
-      // Reset for tomorrow
-      initializeDayEntry();
-      returnToMain();
+
+      // Show success message with option to view
+      const action = existingEntry ? 'updated' : 'saved';
+      if (confirm(`Journal ${action} successfully! Would you like to view your scrapbook entry?`)) {
+        window.location.href = `/pages/flowform-entry.html?id=${entryId}`;
+      } else {
+        // Reset for tomorrow and return to main
+        initializeDayEntry();
+        returnToMain();
+      }
     } else {
       console.error('Save failed:', responseData);
       if (response.status === 401) {
@@ -502,6 +557,29 @@ async function saveToServer() {
   } catch (error) {
     console.error('Error saving journal:', error);
     alert('Error saving journal. Please check your connection and try again.');
+  }
+}
+
+// Check if an entry for today already exists
+async function checkForExistingEntry(entryTitle) {
+  try {
+    const response = await fetch('/api/entries', {
+      credentials: 'include'
+    });
+
+    if (!response.ok) {
+      return null;
+    }
+
+    const entries = await response.json();
+
+    // Look for an entry with the same title (same date)
+    const existingEntry = entries.find(entry => entry.title === entryTitle);
+
+    return existingEntry || null;
+  } catch (error) {
+    console.error('Error checking for existing entry:', error);
+    return null;
   }
 }
 

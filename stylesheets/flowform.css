@@ -358,9 +358,12 @@ body {
 
   /* Picture upload styles */
   .picture-upload-area {
-    margin: 20px 0;
+    margin: 20px auto;
     width: 100%;
     max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .upload-dropzone {
@@ -372,10 +375,12 @@ body {
     transition: all 0.3s ease;
     background: linear-gradient(145deg, #faf6e8 0%, #f4ead5 100%);
     min-height: 120px;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    box-sizing: border-box;
   }
 
   .upload-dropzone:hover, .upload-dropzone.drag-over {
@@ -406,7 +411,11 @@ body {
   .image-preview {
     position: relative;
     max-width: 400px;
+    width: 100%;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .image-preview img {

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/navbar.css">
+    <link rel="stylesheet" href="/stylesheets/flowform-entry.css">
+    <title>Journal-Mate - Daily Entry</title>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="navbar-content">
+            <a href="/pages/selectionpage.html" class="navbar-brand">Journal-Mate</a>
+            <div class="navbar-user">
+                <span class="navbar-username">Loading...</span>
+                <div class="navbar-menu">
+                    <button class="navbar-btn" onclick="logout()">Logout</button>
+                    <button class="navbar-btn danger" onclick="deleteAccount()">Delete Account</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="scrapbook-container">
+        <div class="scrapbook-page">
+            <div id="entryContent">
+                <!-- Content will be loaded dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <script src="/scripts/navbar.js"></script>
+    <script src="/scripts/flowform-entry.js"></script>
+</body>
+
+</html>
