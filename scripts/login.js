@@ -1,15 +1,37 @@
-function login(event) {
+async function login(event) {
     event.preventDefault();
 
-    // Perform your authentication logic here
     var username = document.getElementById('username').value;
     var password = document.getElementById('password').value;
 
-    // Replace the condition with your actual authentication logic
-    if (username === 'example' && password === 'password') {
-      // Redirect to another page upon successful login
-      window.location.href = '/pages/selectionpage.html';
-    } else {
-      alert('Invalid username or password. Please try again.');
+    if (!username || !password) {
+        alert('Please enter both username and password.');
+        return;
     }
-  }
+
+    try {
+        const response = await fetch('/api/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            credentials: 'include',
+            body: JSON.stringify({ username, password })
+        });
+
+        const data = await response.json();
+
+        if (response.ok && data.success) {
+            // Store user info in sessionStorage for quick access
+            sessionStorage.setItem('user', JSON.stringify(data.user));
+
+            // Redirect to selection page
+            window.location.href = '/pages/selectionpage.html';
+        } else {
+            alert(data.error || 'Invalid username or password. Please try again.');
+        }
+    } catch (error) {
+        console.error('Login error:', error);
+        alert('Login failed. Please check your connection and try again.');
+    }
+}

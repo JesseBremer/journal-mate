@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/journal-entries.css">
+    <title>My Journal Entries - Journal-Mate</title>
+</head>
+<body>
+    <div class="entries-container">
+        <h2>My Journal Entries</h2>
+
+        <div class="entries-controls">
+            <button type="button" onclick="goBack()" class="back-button">← Back to Selection</button>
+            <button type="button" onclick="downloadCompleteJournal()" class="download-button">Download Complete Journal PDF</button>
+        </div>
+
+        <div class="search-bar">
+            <input type="text" id="search-input" placeholder="Search your entries..." onkeyup="searchEntries()">
+        </div>
+
+        <div class="loading" id="loading">Loading your journal entries...</div>
+
+        <div class="entries-list" id="entries-list">
+            <!-- Entries will be populated here by JavaScript -->
+        </div>
+
+        <div class="no-entries" id="no-entries" style="display: none;">
+            <p>You haven't written any journal entries yet!</p>
+            <button type="button" onclick="goToFreeform()">Write Your First Entry</button>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="/scripts/journal-entries.js"></script>
+</body>
+</html>

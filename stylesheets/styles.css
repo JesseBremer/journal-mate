@@ -143,3 +143,37 @@ body {
   .back-button:hover {
     background: linear-gradient(145deg, #c5a5f0 0%, #b39ddb 50%, #9575cd 100%) !important;
   }
+
+  .upload-section {
+    border-top: 2px solid rgba(139, 108, 66, 0.3);
+    padding-top: 20px;
+    margin-top: 20px;
+  }
+
+  .upload-section label {
+    font-size: 1em;
+    color: #6d4c41;
+    margin-bottom: 10px;
+  }
+
+  .upload-section input[type="file"] {
+    background: linear-gradient(145deg, #ede0c8 0%, #e6d5b7 100%) !important;
+    border: 2px dashed rgba(139, 108, 66, 0.4);
+    padding: 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .upload-section input[type="file"]:hover {
+    border-color: rgba(139, 108, 66, 0.6);
+    background: linear-gradient(145deg, #f0e6d2 0%, #eadfcc 100%) !important;
+  }
+
+  .upload-info {
+    font-size: 12px;
+    color: rgba(93, 64, 55, 0.7);
+    font-style: italic;
+    margin-top: 8px;
+    margin-bottom: 0;
+  }
