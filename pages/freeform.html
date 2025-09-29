@@ -17,12 +17,13 @@
           <div class="form-group">
             <label for="journal-entry">What's on your mind?</label>
             <textarea name="" id="journal-entry" cols="100" rows="25" placeholder="Drawing a blank? Try the prompt button!"></textarea>
+            <div class="word-count">Words: <span id="word-count">0</span></div>
           </div>
           <div class="form-group">
             <button type="button" onclick="generateNewPrompt()">New Prompt</button>
             <button type="button" onclick="storeEntry()">Save To Drive</button>
             <button type="button" onclick="downloadFormData()">Download</button>
-
+            <button type="button" onclick="goBack()" class="back-button">← Back to Selection</button>
           </div>
         </form>
       </div>

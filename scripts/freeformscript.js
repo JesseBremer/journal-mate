@@ -49,7 +49,37 @@ function downloadFormData() {
   
     // Remove the link from the document
     document.body.removeChild(a);
+
+    // Clear localStorage after successful download
+    clearLocalStorage();
   }
+
+  // Auto-populate title with current date/time when page loads
+  window.onload = function() {
+    let titleInput = document.getElementById('title');
+    if (!titleInput.value) {
+      let now = new Date();
+      let formattedDateTime = now.toLocaleString('en-US', {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        hour: 'numeric',
+        minute: '2-digit',
+        hour12: true
+      });
+      titleInput.value = formattedDateTime;
+    }
+
+    // Load saved content from localStorage
+    loadFromLocalStorage();
+
+    // Setup auto-save
+    setupAutoSave();
+
+    // Setup word count
+    setupWordCount();
+  };
 
   function generateNewPrompt() {
     // Array of possible placeholder values
@@ -79,4 +109,70 @@ function downloadFormData() {
 
     // Change the placeholder to the randomly selected value
     textbox.placeholder = placeholders[randomIndex];
+  }
+
+  // Auto-save functionality
+  function setupAutoSave() {
+    let titleInput = document.getElementById('title');
+    let journalEntry = document.getElementById('journal-entry');
+
+    // Save to localStorage every 2 seconds when typing
+    let saveTimeout;
+
+    function saveToLocalStorage() {
+      clearTimeout(saveTimeout);
+      saveTimeout = setTimeout(() => {
+        localStorage.setItem('journal-title', titleInput.value);
+        localStorage.setItem('journal-entry', journalEntry.value);
+      }, 2000);
+    }
+
+    titleInput.addEventListener('input', saveToLocalStorage);
+    journalEntry.addEventListener('input', saveToLocalStorage);
+  }
+
+  function loadFromLocalStorage() {
+    let titleInput = document.getElementById('title');
+    let journalEntry = document.getElementById('journal-entry');
+
+    // Only load if fields are empty (don't override auto-generated title)
+    let savedTitle = localStorage.getItem('journal-title');
+    let savedEntry = localStorage.getItem('journal-entry');
+
+    if (savedEntry) {
+      journalEntry.value = savedEntry;
+    }
+
+    // Only override auto-generated title if we have a user-modified one
+    if (savedTitle && savedTitle.length > 0) {
+      titleInput.value = savedTitle;
+    }
+  }
+
+  function clearLocalStorage() {
+    localStorage.removeItem('journal-title');
+    localStorage.removeItem('journal-entry');
+  }
+
+  // Word count functionality
+  function setupWordCount() {
+    let journalEntry = document.getElementById('journal-entry');
+    let wordCountElement = document.getElementById('word-count');
+
+    function updateWordCount() {
+      let text = journalEntry.value.trim();
+      let wordCount = text === '' ? 0 : text.split(/\s+/).length;
+      wordCountElement.textContent = wordCount;
+    }
+
+    // Update word count on input
+    journalEntry.addEventListener('input', updateWordCount);
+
+    // Initial word count update
+    updateWordCount();
+  }
+
+  // Navigation function
+  function goBack() {
+    window.location.href = '/pages/selectionpage.html';
   }

@@ -1,10 +1,13 @@
 body {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    background: linear-gradient(135deg, #d4b896 0%, #c9a876 50%, #b8956a 100%);
     box-sizing: border-box;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
     margin: 0;
+    padding: 20px;
   }
 
   .card-container {
@@ -15,16 +18,47 @@ body {
   }
 
   .card {
-    width: 13%;
+    min-width: 200px;
+    width: 280px;
     cursor: pointer;
-    padding: 20px;
-    margin: 30px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
+    padding: 30px;
+    margin: 20px;
+    background: linear-gradient(145deg, #f4ead5 0%, #f0e4c1 30%, #eadc9f 100%);
+    border: 2px solid rgba(139, 108, 66, 0.3);
+    border-radius: 12px;
     text-align: center;
-    transition: transform 0.3s;
+    transition: all 0.3s ease;
+    box-shadow:
+      0 8px 32px rgba(139, 108, 66, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.4),
+      0 2px 4px rgba(139, 108, 66, 0.2);
+  }
+
+  .card h3 {
+    color: #5d4037;
+    font-family: 'Georgia', serif;
+    font-size: 1.8em;
+    margin-bottom: 15px;
+    text-shadow: 0 1px 2px rgba(139, 108, 66, 0.1);
+  }
+
+  .card p {
+    color: #6d4c41;
+    font-family: 'Georgia', serif;
+    font-size: 1.1em;
+    line-height: 1.5;
+    margin: 0;
   }
 
   .card:hover {
-    transform: scale(1.05);
+    transform: translateY(-8px) scale(1.02);
+    box-shadow:
+      0 12px 40px rgba(139, 108, 66, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.5),
+      0 4px 8px rgba(139, 108, 66, 0.3);
+    border-color: rgba(139, 108, 66, 0.5);
+  }
+
+  .card:active {
+    transform: translateY(-4px) scale(1.01);
   }

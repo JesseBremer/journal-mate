@@ -1,24 +1,35 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    font-family: 'Georgia', 'Times New Roman', serif;
+    background: linear-gradient(135deg, #d4b896 0%, #c9a876 50%, #b8956a 100%);
     margin: 0;
-    padding: 0;
+    padding: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
+    min-height: 100vh;
   }
 
   .entry-container {
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding: 20px;
+    background: linear-gradient(145deg, #f4ead5 0%, #f0e4c1 30%, #eadc9f 100%);
+    border-radius: 12px;
+    box-shadow:
+      0 8px 32px rgba(139, 108, 66, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.4),
+      0 2px 4px rgba(139, 108, 66, 0.2);
+    padding: 30px;
     text-align: center;
+    max-width: 800px;
+    width: 90%;
+    border: 1px solid rgba(139, 108, 66, 0.2);
   }
 
   .entry-container h2 {
-    margin-bottom: 20px;
-    color: #333;
+    margin-bottom: 25px;
+    color: #5d4037;
+    font-family: 'Georgia', serif;
+    font-weight: normal;
+    font-size: 2.2em;
+    text-shadow: 0 1px 2px rgba(139, 108, 66, 0.1);
   }
 
   .entry-form {
@@ -32,25 +43,103 @@ body {
 
   .form-group label {
     display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
+    margin-bottom: 8px;
+    font-weight: normal;
+    color: #6d4c41;
+    font-family: 'Georgia', serif;
+    font-size: 1.1em;
   }
 
   .form-group input {
     width: 100%;
-    padding: 8px;
+    padding: 12px;
     box-sizing: border-box;
+    background: linear-gradient(145deg, #ede0c8 0%, #e6d5b7 100%) !important;
+    border: 2px solid rgba(139, 108, 66, 0.4);
+    border-radius: 8px;
+    font-family: 'Georgia', serif;
+    font-size: 16px;
+    color: #4a2c20;
+    transition: all 0.3s ease;
+  }
+
+  .form-group input:focus {
+    outline: none;
+    border-color: rgba(139, 108, 66, 0.6);
+    background: linear-gradient(145deg, #f0e6d2 0%, #eadfcc 100%) !important;
+    box-shadow: 0 0 8px rgba(139, 108, 66, 0.2);
+  }
+
+  .form-group textarea {
+    width: 100%;
+    padding: 20px 15px 15px 15px;
+    box-sizing: border-box;
+    background:
+      linear-gradient(to bottom, transparent 19px, rgba(139, 108, 66, 0.3) 20px),
+      linear-gradient(145deg, #ede0c8 0%, #e6d5b7 100%);
+    background-size: 100% 20px, 100% 100%;
+    border: 2px solid rgba(139, 108, 66, 0.4);
+    border-radius: 8px;
+    font-family: 'Georgia', serif;
+    font-size: 16px;
+    color: #4a2c20;
+    line-height: 20px;
+    resize: vertical;
+    min-height: 400px;
+    transition: all 0.3s ease;
+    background-attachment: local;
+  }
+
+  .form-group textarea:focus {
+    outline: none;
+    border-color: rgba(139, 108, 66, 0.6);
+    background:
+      linear-gradient(to bottom, transparent 19px, rgba(139, 108, 66, 0.35) 20px),
+      linear-gradient(145deg, #f0e6d2 0%, #eadfcc 100%);
+    background-size: 100% 20px, 100% 100%;
+    background-attachment: local;
+    box-shadow: 0 0 8px rgba(139, 108, 66, 0.2);
   }
 
   .form-group button {
-    background-color: #4caf50;
-    color: #fff;
-    padding: 10px;
-    border: none;
-    border-radius: 4px;
+    background: linear-gradient(145deg, #8d6e63 0%, #795548 50%, #6d4c41 100%);
+    color: #faf6e8;
+    padding: 12px 20px;
+    border: 2px solid rgba(139, 108, 66, 0.3);
+    border-radius: 8px;
     cursor: pointer;
+    font-family: 'Georgia', serif;
+    font-size: 16px;
+    margin: 0 5px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(139, 108, 66, 0.2);
   }
 
   .form-group button:hover {
-    background-color: #45a049;
+    background: linear-gradient(145deg, #a1887f 0%, #8d6e63 50%, #795548 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(139, 108, 66, 0.3);
+  }
+
+  .form-group button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(139, 108, 66, 0.2);
+  }
+
+  .word-count {
+    text-align: right;
+    font-size: 13px;
+    color: rgba(93, 64, 55, 0.7);
+    margin-top: 8px;
+    font-family: 'Georgia', serif;
+    font-style: italic;
+  }
+
+  .back-button {
+    background: linear-gradient(145deg, #b39ddb 0%, #9575cd 50%, #7e57c2 100%) !important;
+    border-color: rgba(121, 85, 72, 0.3) !important;
+  }
+
+  .back-button:hover {
+    background: linear-gradient(145deg, #c5a5f0 0%, #b39ddb 50%, #9575cd 100%) !important;
   }

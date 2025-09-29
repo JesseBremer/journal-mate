@@ -9,4 +9,7 @@ function handleButtonClick(buttonNumber) {
 
   }
 
-  
+  // Navigation function
+  function goBack() {
+    window.location.href = '/pages/selectionpage.html';
+  }
